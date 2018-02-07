@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="battleground" class="com.example.demo.Battleground"
+	      factory-method="getInstance">
+	</bean>
+	
+	<bean id="archer" class="com.example.demo.Archer">
+		<constructor-arg value="5"></constructor-arg>
+	</bean>
+	
+	<bean id="arrow1" class="com.example.demo.Arrow"></bean>
+	<bean id="arrow2" class="com.example.demo.Arrow"></bean>
+	<bean id="fireArrow1" class="com.example.demo.FireArrow"></bean>
+	<bean id="fireArrow2" class="com.example.demo.FireArrow"></bean>
+	<bean id="braveBattleCry" class="com.example.demo.BraveBattleCry"></bean>
+	<bean id="braveArcher" class="com.example.demo.BraveArcher" init-method="aim">
+		<constructor-arg value="10"></constructor-arg>
+		<constructor-arg ref="braveBattleCry"></constructor-arg>
+		<property name="heroName" value="Wiilyam Brodinston"></property>
+		<property name="weapons">
+			<list>
+				<ref bean="arrow1"></ref>
+				<ref bean="arrow2"></ref>
+				<ref bean="fireArrow1"></ref>
+				<ref bean="fireArrow2"></ref>
+			</list>
+		</property>
+		<property name="itsNull"><null/></property>
+	</bean>
+</beans>
